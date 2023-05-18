@@ -1,4 +1,4 @@
-# Capsula do Tempo
+# Cápsula do Tempo
 
 Este é um projeto de capsula do tempo para armazenar recordações de momentos importantes em sua carreira. Ele permite que você adicione eventos e detalhes relacionados a cada um deles, criando uma visualização cronológica dos marcos profissionais que você deseja registrar.
 
