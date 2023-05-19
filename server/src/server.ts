@@ -12,7 +12,7 @@ app.register(cors, {
 });
 
 app.register(jwt, {
-  secret: "spacetime", // maneira de diferencia os jwt gerados por esse back-end de outros jwt gerados por outros back-ends
+  secret: "spacetime", // maneira de diferenciar os jwt gerados por esse back-end de outros jwt gerados por outros back-ends
 });
 
 app.register(authRoutes);
