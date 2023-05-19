@@ -1,23 +1,11 @@
 import { useEffect } from "react";
-import { StatusBar } from "expo-status-bar";
-import { ImageBackground, Text, View, TouchableOpacity } from "react-native";
-import { styled } from "nativewind";
-import {
-  useFonts,
-  Roboto_400Regular,
-  Roboto_700Bold,
-} from "@expo-google-fonts/roboto";
-import { BaiJamjuree_700Bold } from "@expo-google-fonts/bai-jamjuree";
+import { Text, View, TouchableOpacity } from "react-native";
 import { useAuthRequest, makeRedirectUri } from "expo-auth-session";
 import { api } from "../src/lib/api";
 import { useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 
-import blurBg from "../src/assets/bg-blur.png";
-import Stripes from "../src/assets/stripes.svg";
 import NLWLogo from "../src/assets/nlw-space-time-logo.svg";
-
-const StyledStripes = styled(Stripes);
 
 const discovery = {
   authorizationEndpoint: "https://github.com/login/oauth/authorize",
@@ -29,13 +17,7 @@ const discovery = {
 export default function App() {
   const router = useRouter();
 
-  const [hasLoadedFonts] = useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold,
-    BaiJamjuree_700Bold,
-  });
-
-  const [request, response, signInWithGitHub] = useAuthRequest(
+  const [, response, signInWithGitHub] = useAuthRequest(
     {
       clientId: "a319c548f3643e60f646",
       scopes: ["identity"],
@@ -71,18 +53,8 @@ export default function App() {
     }
   }, [response]);
 
-  if (!hasLoadedFonts) {
-    return null;
-  }
-
   return (
-    <ImageBackground
-      source={blurBg}
-      className="relative flex-1 items-center justify-center bg-gray-900 px-8 py-10"
-      imageStyle={{ position: "absolute", left: "-100%" }}
-    >
-      <StyledStripes className="absolute left-2" />
-
+    <View className="flex-1 items-center justify-center px-8 py-10">
       <View className="flex-1 items-center justify-center gap-6">
         <NLWLogo />
         <View className="space-y-2">
@@ -107,7 +79,6 @@ export default function App() {
       <Text className="text-center font-body text-sm leading-relaxed text-gray-200">
         Feito com 💜 no NLW da Rocketseat
       </Text>
-      <StatusBar style="light" translucent />
-    </ImageBackground>
+    </View>
   );
 }
